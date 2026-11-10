@@ -71,7 +71,7 @@ figure/diffusion-title.png
 % ------------------------------------------------------------------------------
 
 
-\begin{frame}{Diffusion LLMs in Action}
+\begin{frame}{Diffusion Language Models in Action}
  
 \def\eostok{{\ttfamily\scriptsize<eos>}}
  
@@ -358,7 +358,7 @@ $\phi^{(n+1)}_v$ & \uncover<6->{\textcolor{hl}{\textbf{0.153}}} & \uncover<6->{0
 &= \mathbb{E}_{q_\phi(\bz \mid \bx)}\left[\log \frac{p_\theta(\bx, \bz)\, q_\phi(\bz \mid \bx)}{p_\theta(\bz \mid \bx)\, q_\phi(\bz \mid \bx)}\right]\\
 &= \underbrace{\mathbb{E}_{q_\phi(\bz \mid \bx)}\left[\log \frac{p_\theta(\bx, \bz)}{q_\phi(\bz \mid \bx)}\right]}_{\operatorname{ELBO}(\phi, \theta; \bx)} + \underbrace{\mathbb{E}_{q_\phi(\bz \mid \bx)}\left[\log \frac{q_\phi(\bz \mid \bx)}{p_\theta(\bz \mid \bx)}\right]}_{\operatorname{KL}(q_\phi(\bz \mid \bx) \,\|\, p_\theta(\bz \mid \bx))}
 \end{align*}
-\item<2-> Connection to last week: splitting the logarithm gives
+\item<2-> Connection to Unigram: splitting the logarithm gives
 \begin{equation*}
 \operatorname{ELBO}(\phi, \theta; \bx) = \mathbb{E}_{q_\phi(\bz \mid \bx)}\big[\log p_\theta(\bx, \bz)\big] + H\big[q_\phi(\bz \mid \bx)\big]
 \end{equation*}
@@ -1142,7 +1142,7 @@ p_\theta(\bx_{t-1} \mid \bx_t) = \mathcal{N}\big(\bx_{t-1}; \boldsymbol{\mu}_q(\
  
  
 
-\section{Masked Diffusion LLMs}
+\section{Masked Diffusion Language Models}
 
  
 \begin{frame}{Why Diffusion for Text?}
@@ -1245,7 +1245,7 @@ q(\bx_{t-1}^\ell \mid \bx_t^\ell = \mathbf{m}, \bx_0^\ell) = \operatorname{Cat}\
 \begin{equation*}
 p_\theta(\bx_{t-1}^\ell \mid \bx_t) = \operatorname{Cat}\big(\bx_{t-1}^\ell;\ w_t\, \hat{\bx}_\theta^\ell(\bx_t) + (1 - w_t)\, \mathbf{m}\big) \quad \text{if } \bx_t^\ell = \mathbf{m}
 \end{equation*}
-\item Unmasked positions are copied, so their KL is $0$
+\item Unmasked positions: KL is $0$ (why?)
 \item Masked positions: KL simplifies as
 \begin{equation*}
 \operatorname{KL}\big(q(\bx_{t-1}^\ell \mid \bx_t^\ell, \bx_0^\ell) \,\|\, p_\theta(\bx_{t-1}^\ell \mid \bx_t)\big) = -\,w_t \log p_\theta(\bx_0^\ell \mid \bx_t)
@@ -1271,7 +1271,7 @@ p_\theta(\bx_{t-1}^\ell \mid \bx_t) = \operatorname{Cat}\big(\bx_{t-1}^\ell;\ w_
 \mathcal{L}(\theta) = \sum_{t=1}^{T} \mathbb{E}_{q(\bx_t \mid \bx_0)}\Big[w_t \sum_{\ell:\, \bx_t^\ell = \mathbf{m}} -\log p_\theta(\bx_0^\ell \mid \bx_t)\Big]
 \end{equation*}
 \item What has happened to the reconstruction term?
-\item Linear schedule $\bar{\alpha}_t = 1 - t/T$: masking rate $r_t = t/T$ and $w_t = 1/t$, so
+\item Linear schedule $\bar{\alpha}_t = 1 - t/T$: masking rate $r_t := 1 - \bar{\alpha}_t = t/T$ and $w_t = \frac{\bar{\alpha}_{t-1} - \bar{\alpha}_t}{1 - \bar{\alpha}_t} = \frac{1/T}{t/T} = \frac{1}{T r_t}$, so
 \begin{equation*}
 \mathcal{L}(\theta) = \mathbb{E}_{t \sim \mathcal{U}\{1, \dots, T\}}\, \mathbb{E}_{q(\bx_t \mid \bx_0)}\Big[\frac{1}{r_t} \sum_{\ell:\, \bx_t^\ell = \mathbf{m}} -\log p_\theta(\bx_0^\ell \mid \bx_t)\Big]
 \end{equation*}
@@ -1371,9 +1371,11 @@ p_\theta(\bx_{t-1}^\ell \mid \bx_t) = \operatorname{Cat}\big(\bx_{t-1}^\ell;\ w_
  
 
 \begin{frame}[allowframebreaks,noframenumbering,plain]{References}
+\vfill
         \tiny
         \bibliographystyle{plain} %apalike
         \bibliography{refs-diffusion}
+\vfill
 \end{frame}
 
 \endlecture
