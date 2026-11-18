@@ -1,0 +1,172 @@
+% ==============================================================================
+% References for the lecture on state space models
+% ==============================================================================
+
+% ---- Efficient attention -------------------------------------------------------
+
+@inproceedings{dao2022flashattention,
+  title     = {{FlashAttention}: Fast and Memory-Efficient Exact Attention with {IO}-Awareness},
+  author    = {Dao, Tri and Fu, Daniel Y. and Ermon, Stefano and Rudra, Atri and R{\'e}, Christopher},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2022}
+}
+
+@article{child2019sparse,
+  title   = {Generating Long Sequences with Sparse Transformers},
+  author  = {Child, Rewon and Gray, Scott and Radford, Alec and Sutskever, Ilya},
+  journal = {arXiv preprint arXiv:1904.10509},
+  year    = {2019}
+}
+
+@article{beltagy2020longformer,
+  title   = {Longformer: The Long-Document Transformer},
+  author  = {Beltagy, Iz and Peters, Matthew E. and Cohan, Arman},
+  journal = {arXiv preprint arXiv:2004.05150},
+  year    = {2020}
+}
+
+@inproceedings{zaheer2020bigbird,
+  title     = {Big Bird: Transformers for Longer Sequences},
+  author    = {Zaheer, Manzil and Guruganesh, Guru and Dubey, Kumar Avinava and Ainslie, Joshua and Alberti, Chris and Ontanon, Santiago and Pham, Philip and Ravula, Anirudh and Wang, Qifan and Yang, Li and Ahmed, Amr},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2020}
+}
+
+@article{jiang2023mistral,
+  title   = {Mistral {7B}},
+  author  = {Jiang, Albert Q. and Sablayrolles, Alexandre and Mensch, Arthur and Bamford, Chris and Chaplot, Devendra Singh and de las Casas, Diego and others},
+  journal = {arXiv preprint arXiv:2310.06825},
+  year    = {2023}
+}
+
+@inproceedings{katharopoulos2020transformers,
+  title     = {Transformers are {RNN}s: Fast Autoregressive Transformers with Linear Attention},
+  author    = {Katharopoulos, Angelos and Vyas, Apoorv and Pappas, Nikolaos and Fleuret, Fran{\c{c}}ois},
+  booktitle = {Proceedings of the 37th International Conference on Machine Learning (ICML)},
+  year      = {2020}
+}
+
+@inproceedings{tay2021lra,
+  title     = {Long Range Arena: A Benchmark for Efficient Transformers},
+  author    = {Tay, Yi and Dehghani, Mostafa and Abnar, Samira and Shen, Yikang and Bahri, Dara and Pham, Philip and Rao, Jinfeng and Yang, Liu and Ruder, Sebastian and Metzler, Donald},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2021}
+}
+
+@inproceedings{yuan2025nsa,
+  title     = {Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention},
+  author    = {Yuan, Jingyang and Gao, Huazuo and Dai, Damai and others},
+  booktitle = {Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  year      = {2025}
+}
+
+% ---- RNNs ------------------------------------------------------------------------
+
+@article{bengio1994learning,
+  title   = {Learning Long-Term Dependencies with Gradient Descent is Difficult},
+  author  = {Bengio, Yoshua and Simard, Patrice and Frasconi, Paolo},
+  journal = {IEEE Transactions on Neural Networks},
+  volume  = {5},
+  number  = {2},
+  pages   = {157--166},
+  year    = {1994}
+}
+
+@inproceedings{pascanu2013difficulty,
+  title     = {On the Difficulty of Training Recurrent Neural Networks},
+  author    = {Pascanu, Razvan and Mikolov, Tomas and Bengio, Yoshua},
+  booktitle = {Proceedings of the 30th International Conference on Machine Learning (ICML)},
+  year      = {2013}
+}
+
+@article{hochreiter1997lstm,
+  title   = {Long Short-Term Memory},
+  author  = {Hochreiter, Sepp and Schmidhuber, J{\"u}rgen},
+  journal = {Neural Computation},
+  volume  = {9},
+  number  = {8},
+  pages   = {1735--1780},
+  year    = {1997}
+}
+
+@article{feng2024minrnn,
+  title   = {Were {RNN}s All We Needed?},
+  author  = {Feng, Leo and Tung, Frederick and Ahmed, Mohamed Osama and Bengio, Yoshua and Hajimirsadeghi, Hossein},
+  journal = {arXiv preprint arXiv:2410.01201},
+  year    = {2024}
+}
+
+% ---- Linear RNNs and SSMs ----------------------------------------------------------
+
+@inproceedings{martin2018parallelizing,
+  title     = {Parallelizing Linear Recurrent Neural Nets Over Sequence Length},
+  author    = {Martin, Eric and Cundy, Chris},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2018}
+}
+
+@inproceedings{orvieto2023resurrecting,
+  title     = {Resurrecting Recurrent Neural Networks for Long Sequences},
+  author    = {Orvieto, Antonio and Smith, Samuel L. and Gu, Albert and Fernando, Anushan and Gulcehre, Caglar and Pascanu, Razvan and De, Soham},
+  booktitle = {Proceedings of the 40th International Conference on Machine Learning (ICML)},
+  year      = {2023}
+}
+
+
+@inproceedings{gu2022s4,
+  title     = {Efficiently Modeling Long Sequences with Structured State Spaces},
+  author    = {Gu, Albert and Goel, Karan and R{\'e}, Christopher},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2022}
+}
+
+% ---- Mamba and beyond --------------------------------------------------------------
+
+@inproceedings{gu2024mamba,
+  title     = {Mamba: Linear-Time Sequence Modeling with Selective State Spaces},
+  author    = {Gu, Albert and Dao, Tri},
+  booktitle = {First Conference on Language Modeling (COLM)},
+  year      = {2024}
+}
+
+@inproceedings{fu2023h3,
+  title     = {Hungry Hungry Hippos: Towards Language Modeling with State Space Models},
+  author    = {Fu, Daniel Y. and Dao, Tri and Saab, Khaled K. and Thomas, Armin W. and Rudra, Atri and R{\'e}, Christopher},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2023}
+}
+
+@inproceedings{jelassi2024repeat,
+  title     = {Repeat After Me: Transformers are Better than State Space Models at Copying},
+  author    = {Jelassi, Samy and Brandfonbrener, David and Kakade, Sham M. and Malach, Eran},
+  booktitle = {Proceedings of the 41st International Conference on Machine Learning (ICML)},
+  year      = {2024}
+}
+
+@article{waleffe2024empirical,
+  title   = {An Empirical Study of {Mamba}-based Language Models},
+  author  = {Waleffe, Roger and Byeon, Wonmin and Riach, Duncan and others},
+  journal = {arXiv preprint arXiv:2406.07887},
+  year    = {2024}
+}
+
+@inproceedings{dao2024transformers,
+  title     = {Transformers are {SSM}s: Generalized Models and Efficient Algorithms Through Structured State Space Duality},
+  author    = {Dao, Tri and Gu, Albert},
+  booktitle = {Proceedings of the 41st International Conference on Machine Learning (ICML)},
+  year      = {2024}
+}
+
+@inproceedings{yang2025gated,
+  title     = {Gated Delta Networks: Improving {Mamba2} with Delta Rule},
+  author    = {Yang, Songlin and Kautz, Jan and Hatamizadeh, Ali},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2025}
+}
+
+@inproceedings{lahoti2026mamba3,
+  title     = {{Mamba-3}: Improved Sequence Modeling using State Space Principles},
+  author    = {Lahoti, Aakash and Li, Kevin Y. and Chen, Berlin and Wang, Caitlin and Bick, Aviv and Kolter, J. Zico and Dao, Tri and Gu, Albert},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2026}
+}
