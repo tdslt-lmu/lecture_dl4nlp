@@ -298,3 +298,80 @@
  {\par\unskip\endMakeFramed%
  \at@end@of@kframe}
 \makeatother
+
+%-------------------------
+% Q&A Slides
+%-------------------------
+
+\usepackage{etoolbox}
+\usepackage{pdftexcmds}
+
+\newlength{\qabuttonheight}   \setlength{\qabuttonheight}{1.4em}
+\newcommand{\qaframecolor}{gray}     % colour of the button frame
+\newcommand{\qaroundness}{4pt}
+\newcommand{\qalinewidth}{0.8pt}
+
+\makeatletter
+\newcommand{\qalist}{}
+\newsavebox{\qa@measure}
+
+% rounded, transparent button; fits the text, wraps if too long
+\newcommand{\qa@box}[2]{%
+  \savebox{\qa@measure}{#2}%
+  \hyperlink{#1}{%
+    \begin{tikzpicture}[baseline=(qa@n.base)]
+      \ifdim\wd\qa@measure>\dimexpr\linewidth-12pt-2\qalinewidth\relax
+        \node[draw=\qaframecolor, line width=\qalinewidth,
+              rounded corners=\qaroundness, inner xsep=6pt, inner ysep=2pt,
+              minimum height=\qabuttonheight,
+              text width=\dimexpr\linewidth-12pt-2\qalinewidth\relax,
+              align=left, text=normal text.fg] (qa@n) {#2};
+      \else
+        \node[draw=\qaframecolor, line width=\qalinewidth,
+              rounded corners=\qaroundness, inner xsep=6pt, inner ysep=2pt,
+              minimum height=\qabuttonheight,
+              text=normal text.fg] (qa@n) {#2};
+      \fi
+    \end{tikzpicture}}}
+
+% small "Back" button
+\newcommand{\qa@backbtn}[1]{%
+  \hyperlink{#1}{%
+    \begin{tikzpicture}[baseline=(b.base)]
+      \node[draw=\qaframecolor, line width=\qalinewidth,
+            rounded corners=\qaroundness, inner xsep=6pt, inner ysep=2pt,
+            text=normal text.fg] (b) {\footnotesize Back};
+    \end{tikzpicture}}}
+
+% one entry on the answer slides: {key}{question}{answer}
+\newcommand{\qa@entry}[3]{%
+  \hypertarget{#1}{}%
+  {\color{red}\textbf{Question:}}~#2\par
+  \smallskip
+  \textbf{Answer:}~#3\par
+  \nopagebreak\smallskip
+  \noindent\hfill\qa@backbtn{#1-src}\par
+  \bigskip
+}
+
+% \qa{question}{answer}
+\newcommand{\qa}[2]{%
+  \begingroup
+  \edef\qa@key{qa:\pdf@mdfivesum{\detokenize{#1}}}%
+  \ifcsname \qa@key @seen\endcsname\else
+    \global\expandafter\let\csname \qa@key @seen\endcsname\relax
+    \edef\qa@tmp{\noexpand\qa@entry{\qa@key}}%
+    \expandafter\gappto\expandafter\qalist\expandafter{\qa@tmp{#1}{#2}}%
+  \fi
+  \par\smallskip\noindent
+  \hypertarget{\qa@key -src}{}%
+  \qa@box{\qa@key}{{\color{red}\textbf{Question:}}~#1}%
+  \endgroup
+}
+\makeatother
+
+% all answers, broken over as many slides as needed
+\newcommand{\qaslides}{%
+  \begin{frame}[allowframebreaks,noframenumbering,plain]{Backup: Questions \& Answers}
+    \qalist
+  \end{frame}}
